@@ -69,6 +69,13 @@ Where continent is not null
 Group by continent
 order by TotalDeathCount desc
 
+	--correct way
+Select location, MAX(cast(Total_deaths as int)) as TotalDeathCount
+From PortfolioProject..CovidDeaths
+--Where location like '%states%'
+Where continent is null 
+Group by location
+order by TotalDeathCount desc
 
 
 -- GLOBAL NUMBERS
@@ -157,6 +164,7 @@ Join PortfolioProject..CovidVaccinations vac
 	On dea.location = vac.location
 	and dea.date = vac.date
 where dea.continent is not null 
+
 
 
 
